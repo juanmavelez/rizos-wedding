@@ -120,6 +120,60 @@ a:hover {
 }
 
 /* ---------- Leaf Decorations (SVG) ---------- */
+.leaf-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.leaf {
+  position: absolute;
+  top: -50px;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  z-index: 10;
+}
+
+.leaf--type-1 {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,0 C60,40 100,50 50,100 C0,50 40,40 50,0" fill="%23CC5500" /></svg>');
+}
+
+.leaf--type-2 {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,0 C70,20 80,60 50,100 C20,60 30,20 50,0" fill="%23B5651D" /></svg>');
+}
+
+.leaf--type-3 {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,0 C90,30 90,70 50,100 C10,70 10,30 50,0" fill="%23D4915E" /></svg>');
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.8;
+  }
+
+  90% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(110vh) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
 .leaf-decoration {
   position: absolute;
   pointer-events: none;
@@ -346,7 +400,9 @@ section {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  line-height: 1.1;
+  line-height: 1.4;
+  padding-top: 20px;
+  margin-top: -10px;
   margin-bottom: 30px;
   animation: fadeInUp 1.2s ease forwards;
 }
