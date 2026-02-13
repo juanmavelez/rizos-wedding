@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Verónica & Emilio — Nuestra Boda</title>
-  <meta name="description" content="Os invitamos a celebrar nuestra boda el viernes 19 de junio de 2026. ¡Confirma tu asistencia!" />
+  <meta name="description"
+    content="Os invitamos a celebrar nuestra boda el viernes 19 de junio de 2026. ¡Confirma tu asistencia!" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
   <!-- ─── Navigation Dots ─── -->
   <nav class="nav-dots" aria-label="Navegación por secciones">
     <button class="nav-dot active" data-target="hero" aria-label="Inicio"></button>
-    <button class="nav-dot" data-target="countdown" aria-label="Cuenta atrás"></button>
+    <button class="nav-dot" data-target="history" aria-label="Nuestra Historia"></button>
     <button class="nav-dot" data-target="details" aria-label="Detalles"></button>
+    <button class="nav-dot" data-target="gallery" aria-label="Galería"></button>
+    <button class="nav-dot" data-target="gifts" aria-label="Regalos"></button>
     <button class="nav-dot" data-target="rsvp" aria-label="Confirmar asistencia"></button>
   </nav>
 
@@ -23,28 +28,45 @@
   <section class="hero" id="hero">
 
     <!-- Autumn leaf clusters (SVG) -->
-    <svg class="hero__leaf-cluster hero__leaf-cluster--top-left" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M60 280 C60 280 20 200 80 140 C100 115 90 80 60 60 C100 70 130 100 140 130 C160 80 200 50 260 40 C210 80 180 120 170 160 C200 140 240 140 280 160 C230 170 190 190 170 220 C190 230 210 260 200 290 C180 260 160 240 140 240 C140 260 120 280 60 280Z" fill="#CC5500" opacity="0.6"/>
-      <path d="M30 250 C30 250 10 180 60 130 C75 110 70 85 50 70 C80 78 105 100 110 125 C125 85 155 60 200 55 C165 85 140 115 135 145 C160 130 190 130 220 145 C180 155 150 170 135 195 C150 205 170 230 160 255 C145 235 130 215 115 215 C115 230 100 250 30 250Z" fill="#B5651D" opacity="0.4" transform="translate(20, 30) scale(0.7) rotate(-10)"/>
+    <svg class="hero__leaf-cluster hero__leaf-cluster--top-left" viewBox="0 0 300 300" fill="none"
+      xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path
+        d="M60 280 C60 280 20 200 80 140 C100 115 90 80 60 60 C100 70 130 100 140 130 C160 80 200 50 260 40 C210 80 180 120 170 160 C200 140 240 140 280 160 C230 170 190 190 170 220 C190 230 210 260 200 290 C180 260 160 240 140 240 C140 260 120 280 60 280Z"
+        fill="#CC5500" opacity="0.6" />
     </svg>
 
-    <svg class="hero__leaf-cluster hero__leaf-cluster--top-right" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M60 280 C60 280 20 200 80 140 C100 115 90 80 60 60 C100 70 130 100 140 130 C160 80 200 50 260 40 C210 80 180 120 170 160 C200 140 240 140 280 160 C230 170 190 190 170 220 C190 230 210 260 200 290 C180 260 160 240 140 240 C140 260 120 280 60 280Z" fill="#CC5500" opacity="0.6"/>
-      <path d="M100 260 C100 260 50 190 90 130 C110 110 100 80 80 65 C110 72 130 95 140 120 C155 80 185 55 230 50 C195 75 175 110 165 140 C190 125 215 128 240 140 C205 150 180 165 165 185 C180 198 195 220 185 245 C170 225 155 210 145 210 C143 230 130 250 100 260Z" fill="#B5651D" opacity="0.5" transform="translate(-10, 10) scale(0.8) rotate(5)"/>
-    </svg>
-
-    <svg class="hero__leaf-cluster hero__leaf-cluster--bottom-left" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M60 280 C60 280 20 200 80 140 C100 115 90 80 60 60 C100 70 130 100 140 130 C160 80 200 50 260 40 C210 80 180 120 170 160 C200 140 240 140 280 160 C230 170 190 190 170 220 C190 230 210 260 200 290 C180 260 160 240 140 240 C140 260 120 280 60 280Z" fill="#D4915E" opacity="0.55"/>
-    </svg>
-
-    <svg class="hero__leaf-cluster hero__leaf-cluster--bottom-right" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M60 280 C60 280 20 200 80 140 C100 115 90 80 60 60 C100 70 130 100 140 130 C160 80 200 50 260 40 C210 80 180 120 170 160 C200 140 240 140 280 160 C230 170 190 190 170 220 C190 230 210 260 200 290 C180 260 160 240 140 240 C140 260 120 280 60 280Z" fill="#CC5500" opacity="0.5"/>
+    <svg class="hero__leaf-cluster hero__leaf-cluster--top-right" viewBox="0 0 300 300" fill="none"
+      xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path
+        d="M60 280 C60 280 20 200 80 140 C100 115 90 80 60 60 C100 70 130 100 140 130 C160 80 200 50 260 40 C210 80 180 120 170 160 C200 140 240 140 280 160 C230 170 190 190 170 220 C190 230 210 260 200 290 C180 260 160 240 140 240 C140 260 120 280 60 280Z"
+        fill="#CC5500" opacity="0.6" />
     </svg>
 
     <div class="hero__content">
       <h1 class="hero__names">Verónica &amp; Emilio</h1>
       <p class="hero__invitation-text">Tenemos el placer de invitarte a nuestra boda</p>
-      <p class="hero__date">El Viernes</p>
+
+      <div class="hero__countdown">
+        <div class="hero__countdown-grid">
+          <div class="hero__countdown-item">
+            <span class="hero__countdown-number" id="cd-days">--</span>
+            <span class="hero__countdown-label">Días</span>
+          </div>
+          <div class="hero__countdown-item">
+            <span class="hero__countdown-number" id="cd-hours">--</span>
+            <span class="hero__countdown-label">Horas</span>
+          </div>
+          <div class="hero__countdown-item">
+            <span class="hero__countdown-number" id="cd-minutes">--</span>
+            <span class="hero__countdown-label">Min</span>
+          </div>
+          <div class="hero__countdown-item">
+            <span class="hero__countdown-number" id="cd-seconds">--</span>
+            <span class="hero__countdown-label">Seg</span>
+          </div>
+        </div>
+      </div>
+
       <div class="hero__date-detail">
         <span class="hero__date-segment">JUNIO</span>
         <span class="hero__date-separator"></span>
@@ -52,42 +74,33 @@
         <span class="hero__date-separator"></span>
         <span class="hero__date-segment">2026</span>
       </div>
+
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSceD0fzUGSMBPECZsPVNoUHTqE8QhkL6125Hgw0HHK4boKf4Q/viewform"
+        target="_blank" class="btn btn--primary hero__rsvp-btn">
+        <span>Confirmar Asistencia</span>
+      </a>
     </div>
 
-    <a href="#countdown" class="hero__scroll-indicator" aria-label="Desplázate hacia abajo">
-      <span>Descubre más</span>
+    <a href="#history" class="hero__scroll-indicator" aria-label="Desplázate hacia abajo">
       <div class="hero__scroll-arrow"></div>
     </a>
   </section>
 
   <!-- ═══════════════════════════════════════════
-       COUNTDOWN
+       OUR STORY
        ═══════════════════════════════════════════ -->
-  <section class="countdown" id="countdown">
+  <section class="history" id="history">
     <div class="container reveal">
-      <h2 class="section-title">Cuenta Atrás</h2>
-      <p class="section-subtitle">¿Cuánto falta para el gran día?</p>
+      <h2 class="section-title">Nuestra Historia</h2>
+      <p class="section-subtitle">Un viaje que comenzó con una mirada y nos lleva al "sí, quiero"</p>
       <hr class="section-divider" />
 
-      <div class="countdown__grid" id="countdown-grid">
-        <div class="countdown__item">
-          <span class="countdown__number" id="cd-days">--</span>
-          <span class="countdown__label">Días</span>
-        </div>
-        <span class="countdown__separator" aria-hidden="true">:</span>
-        <div class="countdown__item">
-          <span class="countdown__number" id="cd-hours">--</span>
-          <span class="countdown__label">Horas</span>
-        </div>
-        <span class="countdown__separator" aria-hidden="true">:</span>
-        <div class="countdown__item">
-          <span class="countdown__number" id="cd-minutes">--</span>
-          <span class="countdown__label">Minutos</span>
-        </div>
-        <span class="countdown__separator" aria-hidden="true">:</span>
-        <div class="countdown__item">
-          <span class="countdown__number" id="cd-seconds">--</span>
-          <span class="countdown__label">Segundos</span>
+      <div class="history__content">
+        <div class="history__text">
+          <p>Hay momentos que cambian la vida para siempre, y el nuestro comenzó hace años. Desde las primeras risas
+            compartidas hasta los grandes retos superados juntos, cada paso nos ha traído hasta aquí.</p>
+          <p>Hoy, con la misma ilusión del primer día, queremos dar el paso más importante de nuestras vidas rodeados de
+            las personas que más queremos.</p>
         </div>
       </div>
     </div>
@@ -111,15 +124,12 @@
           <h3 class="detail-card__title">La Ceremonia</h3>
           <p class="detail-card__venue">Iglesia de San Jerónimo el Real</p>
           <p class="detail-card__time">18:00 h</p>
-          <iframe
-            class="detail-card__map"
+          <iframe class="detail-card__map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.847!2d-3.6893!3d40.4139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42289b50e3f9e7%3A0x2b0a0e5e5b5e8c0e!2sIglesia%20de%20San%20Jer%C3%B3nimo%20el%20Real!5e0!3m2!1ses!2ses!4v1700000000000"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Mapa de la Iglesia de San Jerónimo el Real"
-            allowfullscreen
-          ></iframe>
-          <a class="detail-card__link" href="https://maps.google.com/?q=Iglesia+de+San+Jerónimo+el+Real,+Madrid" target="_blank" rel="noopener noreferrer">
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa de la Iglesia de San Jerónimo el Real" allowfullscreen></iframe>
+          <a class="detail-card__link" href="https://maps.google.com/?q=Iglesia+de+San+Jerónimo+el+Real,+Madrid"
+            target="_blank" rel="noopener noreferrer">
             Cómo llegar <span class="detail-card__link-arrow">→</span>
           </a>
         </article>
@@ -130,18 +140,61 @@
           <h3 class="detail-card__title">El Banquete</h3>
           <p class="detail-card__venue">Finca Soto del Cerrolén</p>
           <p class="detail-card__time">Después de la ceremonia</p>
-          <iframe
-            class="detail-card__map"
+          <iframe class="detail-card__map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.0!2d-3.7!3d40.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd418f5e9aa78e87%3A0x1b3b10e8b8d2c0e0!2sFinca%20Soto%20del%20Cerrol%C3%A9n!5e0!3m2!1ses!2ses!4v1700000000001"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Mapa de la Finca Soto del Cerrolén"
-            allowfullscreen
-          ></iframe>
-          <a class="detail-card__link" href="https://maps.google.com/?q=Finca+Soto+del+Cerrolén" target="_blank" rel="noopener noreferrer">
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de la Finca Soto del Cerrolén"
+            allowfullscreen></iframe>
+          <a class="detail-card__link" href="https://maps.google.com/?q=Finca+Soto+del+Cerrolén" target="_blank"
+            rel="noopener noreferrer">
             Cómo llegar <span class="detail-card__link-arrow">→</span>
           </a>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       GALLERY
+       ═══════════════════════════════════════════ -->
+  <section class="gallery" id="gallery">
+    <div class="container reveal">
+      <h2 class="section-title">Galería</h2>
+      <p class="section-subtitle">Momentos que atesoramos</p>
+      <hr class="section-divider" />
+
+      <div class="gallery__grid">
+        <div class="gallery__item"><img
+            src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800"
+            alt="Boda 1"></div>
+        <div class="gallery__item"><img
+            src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800"
+            alt="Boda 2"></div>
+        <div class="gallery__item"><img
+            src="https://images.unsplash.com/photo-1465495910483-0d6749739793?auto=format&fit=crop&q=80&w=800"
+            alt="Boda 3"></div>
+        <div class="gallery__item"><img
+            src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800"
+            alt="Boda 4"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       GIFTS
+       ═══════════════════════════════════════════ -->
+  <section class="gifts" id="gifts">
+    <div class="container reveal text-center">
+      <h2 class="section-title">Regalos</h2>
+      <p class="section-subtitle">Vuestra presencia es nuestro mejor regalo</p>
+      <hr class="section-divider" />
+
+      <div class="gifts__card">
+        <p>Si además deseáis hacernos un detalle, os facilitamos nuestro número de cuenta para ayudarnos en nuestro
+          viaje de novios:</p>
+        <div class="gifts__account">
+          <span class="gifts__iban">ES00 0000 0000 0000 0000 0000</span>
+          <p class="gifts__holder">Titulares: Verónica & Emilio</p>
+        </div>
       </div>
     </div>
   </section>
@@ -152,18 +205,16 @@
   <section class="rsvp" id="rsvp">
     <div class="container reveal">
       <h2 class="section-title">Confirma tu Asistencia</h2>
-      <p class="section-subtitle">Rellena el formulario para que podamos preparar todo</p>
+      <p class="section-subtitle">Por favor, confírmanos antes del día 1 de mayo</p>
       <hr class="section-divider" />
 
-      <div class="rsvp__frame-wrapper">
-        <iframe
-          class="rsvp__iframe"
-          src="https://docs.google.com/forms/d/e/1FAIpQLSceD0fzUGSMBPECZsPVNoUHTqE8QhkL6125Hgw0HHK4boKf4Q/viewform?embedded=true"
-          title="Formulario de confirmación de asistencia"
-          loading="lazy"
-        >
-          Cargando formulario…
-        </iframe>
+      <div class="rsvp__content text-center">
+        <p class="rsvp__text">Para ayudarnos a organizar todo mejor, te agradecemos que rellenes el formulario de
+          confirmación.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSceD0fzUGSMBPECZsPVNoUHTqE8QhkL6125Hgw0HHK4boKf4Q/viewform"
+          target="_blank" class="btn btn--primary">
+          <span>Rellenar Formulario RSVP</span>
+        </a>
       </div>
     </div>
   </section>
@@ -179,4 +230,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
