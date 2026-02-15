@@ -119,44 +119,7 @@
     sections.forEach((section) => sectionObserver.observe(section));
   }
 
-  // ─── Falling Leaves Animation ───────────────
-  const leafContainer = document.getElementById('leaf-container');
-  const LEAF_TYPES = ['leaf--type-1', 'leaf--type-2', 'leaf--type-3'];
 
-  function createLeaf() {
-    if (!leafContainer) return;
-
-    const leaf = document.createElement('div');
-    const type = LEAF_TYPES[Math.floor(Math.random() * LEAF_TYPES.length)];
-
-    leaf.classList.add('leaf', type);
-
-    // Random position and animation properties
-    const startX = Math.random() * window.innerWidth;
-    const duration = 5 + Math.random() * 5; // 5-10s
-    const size = 15 + Math.random() * 25; // 15-40px
-    const delay = Math.random() * 5;
-
-    leaf.style.left = `${startX}px`;
-    leaf.style.width = `${size}px`;
-    leaf.style.height = `${size}px`;
-    leaf.style.animation = `fall ${duration}s linear ${delay}s infinite`;
-
-    leafContainer.appendChild(leaf);
-
-    // Remove leaf after one animation cycle to prevent DOM bloat
-    setTimeout(() => {
-      leaf.remove();
-    }, (duration + delay) * 1000);
-  }
-
-  // Create initial leaves
-  for (let i = 0; i < 15; i++) {
-    createLeaf();
-  }
-
-  // Keep adding leaves periodically
-  setInterval(createLeaf, 1500);
 
   // ─── Smooth number transitions ─────────────
   // Add CSS transition to countdown numbers
@@ -165,4 +128,52 @@
       el.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
     }
   });
+
+  // ─── Navbar Scroll & Mobile Menu ───────────
+  const navbar = document.getElementById('navbar');
+  const navToggle = document.getElementById('navbar-toggle');
+  const navLinks = document.querySelectorAll('.navbar__link');
+
+  // Scroll effect
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scroll');
+    } else {
+      navbar.classList.remove('scroll');
+    }
+  });
+
+  // Mobile toggle
+  if (navToggle) {
+    navToggle.addEventListener('click', () => {
+      navbar.classList.toggle('menu-open');
+      const isExpanded = navbar.classList.contains('menu-open');
+      navToggle.setAttribute('aria-expanded', isExpanded);
+    });
+  }
+
+  // Close menu on link click
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      navbar.classList.remove('menu-open');
+      if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Smooth scroll for nav links
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      const targetId = link.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        e.preventDefault();
+        window.scrollTo({
+          top: targetElement.offsetTop - 70, // Offset for fixed header
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
 })();

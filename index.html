@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Verónica & Emilio — Nuestra Boda</title>
+  <title>Verónica & Emilio | Nuestra Boda</title>
   <meta name="description"
     content="Os invitamos a celebrar nuestra boda el viernes 19 de junio de 2026. ¡Confirma tu asistencia!" />
   <link rel="stylesheet" href="styles.css" />
@@ -12,8 +12,28 @@
 
 <body>
 
-  <div class="leaf-container" id="leaf-container"></div>
 
+  <!-- ─── Header / Navbar ─── -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__container">
+      <a href="#hero" class="navbar__logo">V&E</a>
+
+      <button class="navbar__toggle" id="navbar-toggle" aria-label="Abrir menú">
+        <span class="hamburger"></span>
+      </button>
+
+      <nav class="navbar__menu" id="navbar-menu">
+        <ul class="navbar__list">
+          <li class="navbar__item"><a href="#hero" class="navbar__link">Inicio</a></li>
+          <li class="navbar__item"><a href="#history" class="navbar__link">Nuestra Historia</a></li>
+          <li class="navbar__item"><a href="#details" class="navbar__link">Detalles</a></li>
+          <li class="navbar__item"><a href="#gallery" class="navbar__link">Galería</a></li>
+          <li class="navbar__item"><a href="#gifts" class="navbar__link">Regalos</a></li>
+          <li class="navbar__item"><a href="#rsvp" class="navbar__link">RSVP</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
   <!-- ─── Navigation Dots ─── -->
   <nav class="nav-dots" aria-label="Navegación por secciones">
     <button class="nav-dot active" data-target="hero" aria-label="Inicio"></button>
@@ -30,57 +50,37 @@
   <section class="hero" id="hero">
 
     <!-- Autumn leaf clusters (SVG) -->
-    <svg class="hero__leaf-cluster hero__leaf-cluster--top-left" viewBox="0 0 300 300" fill="none"
-      xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path
-        d="M60 280 C60 280 20 200 80 140 C100 115 90 80 60 60 C100 70 130 100 140 130 C160 80 200 50 260 40 C210 80 180 120 170 160 C200 140 240 140 280 160 C230 170 190 190 170 220 C190 230 210 260 200 290 C180 260 160 240 140 240 C140 260 120 280 60 280Z"
-        fill="#CC5500" opacity="0.6" />
-    </svg>
 
-    <svg class="hero__leaf-cluster hero__leaf-cluster--top-right" viewBox="0 0 300 300" fill="none"
-      xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path
-        d="M60 280 C60 280 20 200 80 140 C100 115 90 80 60 60 C100 70 130 100 140 130 C160 80 200 50 260 40 C210 80 180 120 170 160 C200 140 240 140 280 160 C230 170 190 190 170 220 C190 230 210 260 200 290 C180 260 160 240 140 240 C140 260 120 280 60 280Z"
-        fill="#CC5500" opacity="0.6" />
-    </svg>
 
-    <div class="hero__content">
-      <h1 class="hero__names">Verónica &amp; Emilio</h1>
-      <p class="hero__invitation-text">Tenemos el placer de invitarte a nuestra boda</p>
+    <div class="hero__side hero__side--image">
+      <img src="assets/rizos3.jpeg" alt="Verónica & Emilio" class="hero__bg-image">
+      <div class="hero__overlay"></div>
+    </div>
 
-      <div class="hero__countdown">
-        <div class="hero__countdown-grid">
-          <div class="hero__countdown-item">
-            <span class="hero__countdown-number" id="cd-days">--</span>
-            <span class="hero__countdown-label">Días</span>
-          </div>
-          <div class="hero__countdown-item">
-            <span class="hero__countdown-number" id="cd-hours">--</span>
-            <span class="hero__countdown-label">Horas</span>
-          </div>
-          <div class="hero__countdown-item">
-            <span class="hero__countdown-number" id="cd-minutes">--</span>
-            <span class="hero__countdown-label">Min</span>
-          </div>
-          <div class="hero__countdown-item">
-            <span class="hero__countdown-number" id="cd-seconds">--</span>
-            <span class="hero__countdown-label">Seg</span>
-          </div>
+    <div class="hero__side hero__side--content">
+      <div class="hero__content-wrapper">
+        <h1 class="hero__names">
+          <p>Verónica</p>
+          <p class="hero_names-amp">&amp;</p>
+          <p>Emilio</p>
+        </h1>
+
+
+
+
+        <div class="hero__date-detail">
+          <span class="hero__date-segment">JUNIO</span>
+          <span class="hero__date-separator"></span>
+          <span class="hero__date-segment hero__date-segment--large">19</span>
+          <span class="hero__date-separator"></span>
+          <span class="hero__date-segment">2026</span>
         </div>
-      </div>
 
-      <div class="hero__date-detail">
-        <span class="hero__date-segment">JUNIO</span>
-        <span class="hero__date-separator"></span>
-        <span class="hero__date-segment hero__date-segment--large">19</span>
-        <span class="hero__date-separator"></span>
-        <span class="hero__date-segment">2026</span>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSceD0fzUGSMBPECZsPVNoUHTqE8QhkL6125Hgw0HHK4boKf4Q/viewform"
+          target="_blank" class="btn btn--primary hero__rsvp-btn">
+          <span>Confirmar Asistencia</span>
+        </a>
       </div>
-
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSceD0fzUGSMBPECZsPVNoUHTqE8QhkL6125Hgw0HHK4boKf4Q/viewform"
-        target="_blank" class="btn btn--primary hero__rsvp-btn">
-        <span>Confirmar Asistencia</span>
-      </a>
     </div>
 
     <a href="#history" class="hero__scroll-indicator" aria-label="Desplázate hacia abajo">
@@ -89,8 +89,34 @@
   </section>
 
   <!-- ═══════════════════════════════════════════
-       OUR STORY
+       COUNTDOWN SECTION
        ═══════════════════════════════════════════ -->
+  <section class="countdown-section">
+    <div class="container reveal">
+      <div class="countdown-card">
+        <h2 class="countdown-title">Cuenta atrás para el gran día</h2>
+        <div class="countdown-grid">
+          <div class="countdown-item">
+            <span class="countdown-number" id="cd-days">--</span>
+            <span class="countdown-label">Días</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="cd-hours">--</span>
+            <span class="countdown-label">Horas</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="cd-minutes">--</span>
+            <span class="countdown-label">Minutos</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="cd-seconds">--</span>
+            <span class="countdown-label">Segundos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="history" id="history">
     <div class="container reveal">
       <h2 class="section-title">Nuestra Historia</h2>
@@ -163,21 +189,17 @@
       <h2 class="section-title">Galería</h2>
       <p class="section-subtitle">Momentos que atesoramos</p>
       <hr class="section-divider" />
+    </div>
 
-      <div class="gallery__grid">
-        <div class="gallery__item"><img
-            src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800"
-            alt="Boda 1"></div>
-        <div class="gallery__item"><img
-            src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800"
-            alt="Boda 2"></div>
-        <div class="gallery__item"><img
-            src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=800"
-            alt="Boda 3"></div>
-        <div class="gallery__item"><img
-            src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800"
-            alt="Boda 4"></div>
-      </div>
+    <div class="gallery__grid">
+      <div class="gallery__item"><img src="assets/rizos1.jpeg" alt="Verónica & Emilio 1"></div>
+      <div class="gallery__item"><img src="assets/rizos2.jpeg" alt="Verónica & Emilio 2"></div>
+      <div class="gallery__item"><img src="assets/rizos3.jpeg" alt="Verónica & Emilio 3"></div>
+      <div class="gallery__item"><img src="assets/rizos4.jpeg" alt="Verónica & Emilio 4"></div>
+      <div class="gallery__item"><img src="assets/rizos5.jpeg" alt="Verónica & Emilio 5"></div>
+      <div class="gallery__item"><img src="assets/rizos6.jpeg" alt="Verónica & Emilio 6"></div>
+      <div class="gallery__item"><img src="assets/rizos7.jpeg" alt="Verónica & Emilio 7"></div>
+      <div class="gallery__item"><img src="assets/rizos9.jpeg" alt="Verónica & Emilio 9"></div>
     </div>
   </section>
 
@@ -215,7 +237,7 @@
           confirmación.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSceD0fzUGSMBPECZsPVNoUHTqE8QhkL6125Hgw0HHK4boKf4Q/viewform"
           target="_blank" class="btn btn--primary">
-          <span>Rellenar Formulario RSVP</span>
+          <span>Rellenar Formulario</span>
         </a>
       </div>
     </div>
