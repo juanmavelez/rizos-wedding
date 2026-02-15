@@ -579,7 +579,6 @@ section {
 .timeline__content {
   margin-top: 60px;
   /* Increased to clear the track and dot */
-  /* Space for the dot in the middle */
   background: var(--cream);
   padding: 25px;
   border-radius: var(--border-radius);
@@ -587,6 +586,9 @@ section {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
   transition: transform var(--transition), box-shadow var(--transition);
   max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .timeline__time {
@@ -628,6 +630,9 @@ section {
   padding: 8px 16px;
   border-radius: 4px;
   transition: all 0.3s ease;
+  margin-top: auto;
+  /* Push to bottom */
+  align-self: center;
 }
 
 .timeline__link:hover {
