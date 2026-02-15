@@ -576,10 +576,6 @@ section {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.timeline__item:hover .timeline__dot {
-  /* dot hover effect removed */
-}
-
 .timeline__content {
   margin-top: 60px;
   /* Increased to clear the track and dot */
@@ -591,10 +587,6 @@ section {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
   transition: transform var(--transition), box-shadow var(--transition);
   max-width: 320px;
-}
-
-.timeline__item:hover .timeline__content {
-  /* card lift animation removed */
 }
 
 .timeline__time {
