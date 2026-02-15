@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <title>Verónica & Emilio | Nuestra Boda</title>
   <meta name="description"
     content="Os invitamos a celebrar nuestra boda el viernes 19 de junio de 2026. ¡Confirma tu asistencia!" />
@@ -16,7 +17,7 @@
   <!-- ─── Header / Navbar ─── -->
   <header class="navbar" id="navbar">
     <div class="navbar__container">
-      <a href="#hero" class="navbar__logo">V&E</a>
+      <a href="#" class="navbar__logo">V&E</a>
 
       <button class="navbar__toggle" id="navbar-toggle" aria-label="Abrir menú">
         <span class="hamburger"></span>
@@ -24,21 +25,22 @@
 
       <nav class="navbar__menu" id="navbar-menu">
         <ul class="navbar__list">
-          <li class="navbar__item"><a href="#hero" class="navbar__link">Inicio</a></li>
-          <li class="navbar__item"><a href="#history" class="navbar__link">Nuestra Historia</a></li>
+          <li class="navbar__item"><a href="#history" class="navbar__link">Nuestra historia</a></li>
           <li class="navbar__item"><a href="#details" class="navbar__link">Detalles</a></li>
           <li class="navbar__item"><a href="#gallery" class="navbar__link">Galería</a></li>
           <li class="navbar__item"><a href="#gifts" class="navbar__link">Regalos</a></li>
-          <li class="navbar__item"><a href="#rsvp" class="navbar__link">RSVP</a></li>
+          <li class="navbar__item"><a href="#rsvp" class="navbar__link">Confirmar asistencia</a></li>
+          <li class="navbar__item">
+            <button class="navbar__btn" id="add-to-calendar">Recordar fecha</button>
+          </li>
         </ul>
       </nav>
     </div>
   </header>
   <!-- ─── Navigation Dots ─── -->
   <nav class="nav-dots" aria-label="Navegación por secciones">
-    <button class="nav-dot active" data-target="hero" aria-label="Inicio"></button>
-    <button class="nav-dot" data-target="history" aria-label="Nuestra Historia"></button>
-    <button class="nav-dot" data-target="details" aria-label="Detalles"></button>
+    <button class="nav-dot" data-target="#top" aria-label="Inicio"></button>
+    <button class="nav-dot" data-target="history" aria-label="Nuestra historia"></button>
     <button class="nav-dot" data-target="gallery" aria-label="Galería"></button>
     <button class="nav-dot" data-target="gifts" aria-label="Regalos"></button>
     <button class="nav-dot" data-target="rsvp" aria-label="Confirmar asistencia"></button>
@@ -88,34 +90,6 @@
     </a>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       COUNTDOWN SECTION
-       ═══════════════════════════════════════════ -->
-  <section class="countdown-section">
-    <div class="container reveal">
-      <div class="countdown-card">
-        <h2 class="countdown-title">Cuenta atrás para el gran día</h2>
-        <div class="countdown-grid">
-          <div class="countdown-item">
-            <span class="countdown-number" id="cd-days">--</span>
-            <span class="countdown-label">Días</span>
-          </div>
-          <div class="countdown-item">
-            <span class="countdown-number" id="cd-hours">--</span>
-            <span class="countdown-label">Horas</span>
-          </div>
-          <div class="countdown-item">
-            <span class="countdown-number" id="cd-minutes">--</span>
-            <span class="countdown-label">Minutos</span>
-          </div>
-          <div class="countdown-item">
-            <span class="countdown-number" id="cd-seconds">--</span>
-            <span class="countdown-label">Segundos</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="history" id="history">
     <div class="container reveal">
@@ -145,38 +119,34 @@
         <hr class="section-divider" />
       </div>
 
-      <div class="details__cards">
-        <!-- Ceremony Card -->
-        <article class="detail-card reveal">
-          <span class="detail-card__icon" aria-hidden="true">⛪</span>
-          <h3 class="detail-card__title">La Ceremonia</h3>
-          <p class="detail-card__venue">Iglesia de San Jerónimo el Real</p>
-          <p class="detail-card__time">18:00 h</p>
-          <iframe class="detail-card__map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.847!2d-3.6893!3d40.4139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42289b50e3f9e7%3A0x2b0a0e5e5b5e8c0e!2sIglesia%20de%20San%20Jer%C3%B3nimo%20el%20Real!5e0!3m2!1ses!2ses!4v1700000000000"
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            title="Mapa de la Iglesia de San Jerónimo el Real" allowfullscreen></iframe>
-          <a class="detail-card__link" href="https://maps.google.com/?q=Iglesia+de+San+Jerónimo+el+Real,+Madrid"
-            target="_blank" rel="noopener noreferrer">
-            Cómo llegar <span class="detail-card__link-arrow">→</span>
-          </a>
-        </article>
+      <div class="timeline reveal">
+        <div class="timeline__track"></div>
 
-        <!-- Reception Card -->
-        <article class="detail-card reveal">
-          <span class="detail-card__icon" aria-hidden="true">🥂</span>
-          <h3 class="detail-card__title">El Banquete</h3>
-          <p class="detail-card__venue">Finca Soto del Cerrolén</p>
-          <p class="detail-card__time">Después de la ceremonia</p>
-          <iframe class="detail-card__map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.0!2d-3.7!3d40.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd418f5e9aa78e87%3A0x1b3b10e8b8d2c0e0!2sFinca%20Soto%20del%20Cerrol%C3%A9n!5e0!3m2!1ses!2ses!4v1700000000001"
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de la Finca Soto del Cerrolén"
-            allowfullscreen></iframe>
-          <a class="detail-card__link" href="https://maps.google.com/?q=Finca+Soto+del+Cerrolén" target="_blank"
-            rel="noopener noreferrer">
-            Cómo llegar <span class="detail-card__link-arrow">→</span>
-          </a>
-        </article>
+        <div class="timeline__items">
+          <!-- Ceremony -->
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <span class="timeline__time">18:00 h</span>
+              <h3 class="timeline__title">La Ceremonia</h3>
+              <p class="timeline__location">Iglesia de San Jerónimo el Real</p>
+              <a href="https://maps.google.com/?q=Iglesia+de+San+Jerónimo+el+Real,+Madrid" target="_blank"
+                class="timeline__link">Cómo llegar →</a>
+            </div>
+          </div>
+
+          <!-- Reception -->
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__content">
+              <span class="timeline__time">A continuación</span>
+              <h3 class="timeline__title">El Banquete</h3>
+              <p class="timeline__location">Finca Soto del Cerrolén</p>
+              <a href="https://maps.google.com/?q=Finca+Soto+del+Cerrolén" target="_blank" class="timeline__link">Cómo
+                llegar →</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -232,12 +202,14 @@
       <p class="section-subtitle">Por favor, confírmanos antes del día 1 de mayo</p>
       <hr class="section-divider" />
 
-      <div class="rsvp__content text-center">
-        <p class="rsvp__text">Para ayudarnos a organizar todo mejor, te agradecemos que rellenes el formulario de
-          confirmación.</p>
+      <div class="rsvp__content">
+        <p class="rsvp__text">
+          Nos haría muchísima ilusión que nos acompañaras en este día tan especial.
+          Por favor, confírmanos tu asistencia a través del siguiente formulario.
+        </p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSceD0fzUGSMBPECZsPVNoUHTqE8QhkL6125Hgw0HHK4boKf4Q/viewform"
           target="_blank" class="btn btn--primary">
-          <span>Rellenar Formulario</span>
+          Confirmar Asistencia
         </a>
       </div>
     </div>

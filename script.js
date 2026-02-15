@@ -6,61 +6,6 @@
 (function () {
   'use strict';
 
-  // ─── Countdown Timer ───────────────────────
-  const WEDDING_DATE = new Date('2026-06-19T18:00:00+02:00'); // Madrid timezone (CEST)
-
-  const cdDays = document.getElementById('cd-days');
-  const cdHours = document.getElementById('cd-hours');
-  const cdMinutes = document.getElementById('cd-minutes');
-  const cdSeconds = document.getElementById('cd-seconds');
-
-  function pad(n) {
-    return String(n).padStart(2, '0');
-  }
-
-  function updateCountdown() {
-    const now = new Date();
-    const diff = WEDDING_DATE - now;
-
-    if (diff <= 0) {
-      cdDays.textContent = '🎉';
-      cdHours.textContent = '00';
-      cdMinutes.textContent = '00';
-      cdSeconds.textContent = '00';
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-
-    // Animate number change
-    animateNumber(cdDays, days);
-    animateNumber(cdHours, pad(hours));
-    animateNumber(cdMinutes, pad(minutes));
-    animateNumber(cdSeconds, pad(seconds));
-  }
-
-  function animateNumber(element, newValue) {
-    const strValue = String(newValue);
-    if (element.textContent !== strValue) {
-      element.style.transform = 'translateY(-4px)';
-      element.style.opacity = '0.6';
-      requestAnimationFrame(() => {
-        element.textContent = strValue;
-        requestAnimationFrame(() => {
-          element.style.transform = 'translateY(0)';
-          element.style.opacity = '1';
-        });
-      });
-    }
-  }
-
-  // Initial call + interval
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
   // ─── Scroll Reveal ─────────────────────────
   const revealElements = document.querySelectorAll('.reveal');
 
@@ -116,32 +61,17 @@
       { threshold: 0.3 }
     );
 
-    sections.forEach((section) => sectionObserver.observe(section));
+    sections.forEach((section) => {
+      // Skip top anchor if it doesn't have an ID
+      if (section.id) sectionObserver.observe(section);
+    });
   }
 
 
-
-  // ─── Smooth number transitions ─────────────
-  // Add CSS transition to countdown numbers
-  [cdDays, cdHours, cdMinutes, cdSeconds].forEach((el) => {
-    if (el) {
-      el.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
-    }
-  });
-
-  // ─── Navbar Scroll & Mobile Menu ───────────
+  // ─── Navbar Mobile Menu ───────────
   const navbar = document.getElementById('navbar');
   const navToggle = document.getElementById('navbar-toggle');
   const navLinks = document.querySelectorAll('.navbar__link');
-
-  // Scroll effect
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar.classList.add('scroll');
-    } else {
-      navbar.classList.remove('scroll');
-    }
-  });
 
   // Mobile toggle
   if (navToggle) {
@@ -176,4 +106,41 @@
     });
   });
 
+  // ─── Add to Calendar Logic ─────────
+  const calendarBtn = document.getElementById('add-to-calendar');
+  if (calendarBtn) {
+    calendarBtn.addEventListener('click', () => {
+      const event = {
+        title: 'Boda de Verónica & Emilio',
+        start: '20260619T180000',
+        end: '20260620T040000',
+        location: 'Iglesia de San Jerónimo el Real, Madrid',
+        description: '¡Nos casamos! Te esperamos para celebrar este día tan especial.'
+      };
+
+      const icsMsg = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Wedding Website//ES',
+        'BEGIN:VEVENT',
+        `UID:${Date.now()}@weddingwebsite.com`,
+        `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z`,
+        `DTSTART:${event.start}`,
+        `DTEND:${event.end}`,
+        `SUMMARY:${event.title}`,
+        `DESCRIPTION:${event.description}`,
+        `LOCATION:${event.location}`,
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      const blob = new Blob([icsMsg], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.setAttribute('download', 'Boda_Veronica_y_Emilio.ics');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  }
 })();
