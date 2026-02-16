@@ -107,9 +107,10 @@
   });
 
   // ─── Add to Calendar Logic ─────────
-  const calendarBtn = document.getElementById('add-to-calendar');
-  if (calendarBtn) {
-    calendarBtn.addEventListener('click', () => {
+  const calendarButtons = document.querySelectorAll('#add-to-calendar, #add-to-calendar-hero, #add-to-calendar-rsvp');
+
+  calendarButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
       const event = {
         title: 'Boda de Verónica & Emilio',
         start: '20260619T180000',
@@ -142,5 +143,5 @@
       link.click();
       document.body.removeChild(link);
     });
-  }
+  });
 })();

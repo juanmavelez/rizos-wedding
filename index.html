@@ -29,10 +29,7 @@
           <li class="navbar__item"><a href="#details" class="navbar__link">Detalles</a></li>
           <li class="navbar__item"><a href="#gallery" class="navbar__link">Galería</a></li>
           <li class="navbar__item"><a href="#gifts" class="navbar__link">Regalos</a></li>
-          <li class="navbar__item"><a href="#rsvp" class="navbar__link">Confirmar asistencia</a></li>
-          <li class="navbar__item">
-            <button class="navbar__btn" id="add-to-calendar">Recordar fecha</button>
-          </li>
+          <li class="navbar__item"><a href="#rsvp" class="navbar__link">Confirmar</a></li>
         </ul>
       </nav>
     </div>
@@ -43,7 +40,7 @@
     <button class="nav-dot" data-target="history" aria-label="Nuestra historia"></button>
     <button class="nav-dot" data-target="gallery" aria-label="Galería"></button>
     <button class="nav-dot" data-target="gifts" aria-label="Regalos"></button>
-    <button class="nav-dot" data-target="rsvp" aria-label="Confirmar asistencia"></button>
+    <button class="nav-dot" data-target="rsvp" aria-label="Confirmar"></button>
   </nav>
 
   <!-- ═══════════════════════════════════════════
@@ -78,10 +75,13 @@
           <span class="hero__date-segment">2026</span>
         </div>
 
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSceD0fzUGSMBPECZsPVNoUHTqE8QhkL6125Hgw0HHK4boKf4Q/viewform"
-          target="_blank" class="btn btn--primary hero__rsvp-btn">
-          <span>Confirmar Asistencia</span>
-        </a>
+        <div class="hero__actions">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSceD0fzUGSMBPECZsPVNoUHTqE8QhkL6125Hgw0HHK4boKf4Q/viewform"
+            target="_blank" class="btn btn--primary hero__rsvp-btn">
+            <span>Confirmar</span>
+          </a>
+          <button class="btn btn--secondary btn--small" id="add-to-calendar-hero">Añadir al calendario</button>
+        </div>
       </div>
     </div>
 
@@ -207,10 +207,13 @@
           Nos haría muchísima ilusión que nos acompañaras en este día tan especial.
           Por favor, confírmanos tu asistencia a través del siguiente formulario.
         </p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSceD0fzUGSMBPECZsPVNoUHTqE8QhkL6125Hgw0HHK4boKf4Q/viewform"
-          target="_blank" class="btn btn--primary">
-          Confirmar Asistencia
-        </a>
+        <div class="rsvp__actions">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSceD0fzUGSMBPECZsPVNoUHTqE8QhkL6125Hgw0HHK4boKf4Q/viewform"
+            target="_blank" class="btn btn--primary">
+            Confirmar
+          </a>
+          <button class="btn btn--secondary btn--small" id="add-to-calendar-rsvp">Añadir al calendario</button>
+        </div>
       </div>
     </div>
   </section>
