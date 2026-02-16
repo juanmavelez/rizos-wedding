@@ -432,7 +432,7 @@ section {
 }
 
 .hero__actions .btn {
-  min-width: 260px;
+  width: 280px;
   justify-content: center;
 }
 
@@ -602,7 +602,6 @@ section {
 
 .timeline__content {
   margin-top: 60px;
-  /* Increased to clear the track and dot */
   background: var(--cream);
   padding: 25px;
   border-radius: var(--border-radius);
@@ -686,7 +685,7 @@ section {
 
   .timeline__items {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     padding-left: 40px;
     gap: 40px;
   }
@@ -711,6 +710,7 @@ section {
     margin-top: 0;
     width: 100%;
     max-width: none;
+    min-height: 240px;
   }
 }
 
@@ -826,7 +826,7 @@ section {
 }
 
 .rsvp__actions .btn {
-  min-width: 260px;
+  width: 280px;
   justify-content: center;
 }
 

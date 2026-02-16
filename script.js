@@ -107,10 +107,22 @@
   });
 
   // ─── Add to Calendar Logic ─────────
-  const calendarButtons = document.querySelectorAll('#add-to-calendar, #add-to-calendar-hero, #add-to-calendar-rsvp');
+  document.addEventListener('click', (e) => {
+    const calendarBtn = e.target.closest('.js-calendar-btn');
+    if (!calendarBtn) return;
 
-  calendarButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
+    console.log('Calendar button clicked!');
+
+    try {
+      const escapeICS = (str) => {
+        if (!str) return '';
+        return str
+          .replace(/\\/g, '\\\\')
+          .replace(/;/g, '\\;')
+          .replace(/,/g, '\\,')
+          .replace(/\n/g, '\\n');
+      };
+
       const event = {
         title: 'Boda de Verónica & Emilio',
         start: '20260619T180000',
@@ -123,25 +135,44 @@
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
         'PRODID:-//Wedding Website//ES',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
         'BEGIN:VEVENT',
         `UID:${Date.now()}@weddingwebsite.com`,
         `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z`,
         `DTSTART:${event.start}`,
         `DTEND:${event.end}`,
-        `SUMMARY:${event.title}`,
-        `DESCRIPTION:${event.description}`,
-        `LOCATION:${event.location}`,
+        `SUMMARY:${escapeICS(event.title)}`,
+        `DESCRIPTION:${escapeICS(event.description)}`,
+        `LOCATION:${escapeICS(event.location)}`,
+        'CLASS:PUBLIC',
+        'TRANSP:OPAQUE',
+        'STATUS:CONFIRMED',
         'END:VEVENT',
         'END:VCALENDAR'
       ].join('\r\n');
 
       const blob = new Blob([icsMsg], { type: 'text/calendar;charset=utf-8' });
+      const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
+
+      link.href = url;
       link.setAttribute('download', 'Boda_Veronica_y_Emilio.ics');
+      link.style.display = 'none';
       document.body.appendChild(link);
+
+      console.log('Triggering download...');
       link.click();
-      document.body.removeChild(link);
-    });
+
+      // Cleanup
+      setTimeout(() => {
+        if (link.parentNode) document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      }, 500);
+
+      console.log('Download logic completed.');
+    } catch (err) {
+      console.error('Error generating calendar event:', err);
+    }
   });
 })();
