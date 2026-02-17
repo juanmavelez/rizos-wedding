@@ -15,7 +15,8 @@
 
 
   <!-- ─── Header / Navbar ─── -->
-  <header class="navbar" id="navbar">
+  <nav class="navbar js-navbar">
+    <div class="navbar__overlay js-navbar-overlay"></div>
     <div class="navbar__container">
       <a href="#" class="navbar__logo">V&E</a>
 
@@ -27,18 +28,20 @@
         <ul class="navbar__list">
           <li><a href="#history" class="navbar__link">Nuestra historia</a></li>
           <li><a href="#details" class="navbar__link">Detalles</a></li>
+          <li><a href="#faq" class="navbar__link">FAQ</a></li>
           <li><a href="#gallery" class="navbar__link">Galería</a></li>
           <li><a href="#gifts" class="navbar__link">Regalos</a></li>
           <li><a href="#rsvp" class="navbar__link">Confirmar</a></li>
         </ul>
       </nav>
     </div>
-  </header>
+  </nav>
   <!-- ─── Navigation Dots ─── -->
   <nav class="nav-dots" aria-label="Navegación por secciones">
     <button class="nav-dot" data-target="#top" aria-label="Inicio"></button>
     <button class="nav-dot" data-target="history" aria-label="Nuestra historia"></button>
     <button class="nav-dot" data-target="gallery" aria-label="Galería"></button>
+    <button class="nav-dot" data-target="faq" aria-label="FAQ"></button>
     <button class="nav-dot" data-target="gifts" aria-label="Regalos"></button>
     <button class="nav-dot" data-target="rsvp" aria-label="Confirmar"></button>
   </nav>
@@ -155,14 +158,88 @@
     </div>
 
     <div class="gallery__grid">
-      <div class="gallery__item"><img src="assets/rizos1.jpeg" alt="Verónica & Emilio 1"></div>
-      <div class="gallery__item"><img src="assets/rizos2.jpeg" alt="Verónica & Emilio 2"></div>
+      <div class="gallery__item"><img src="assets/rizos1.jpeg" alt="Recuerdo 1"></div>
+      <div class="gallery__item"><img src="assets/rizos2.jpeg" alt="Recuerdo 2"></div>
       <div class="gallery__item"><img src="assets/rizos3.jpeg" alt="Verónica & Emilio 3"></div>
-      <div class="gallery__item"><img src="assets/rizos4.jpeg" alt="Verónica & Emilio 4"></div>
-      <div class="gallery__item"><img src="assets/rizos5.jpeg" alt="Verónica & Emilio 5"></div>
-      <div class="gallery__item"><img src="assets/rizos6.jpeg" alt="Verónica & Emilio 6"></div>
+      <div class="gallery__item"><img src="assets/rizos4.jpeg" alt="Recuerdo 4"></div>
+      <div class="gallery__item"><img src="assets/rizos5.jpeg" alt="Recuerdo 5"></div>
+      <div class="gallery__item"><img src="assets/rizos6.jpeg" alt="Recuerdo 6"></div>
       <div class="gallery__item"><img src="assets/rizos7.jpeg" alt="Verónica & Emilio 7"></div>
       <div class="gallery__item"><img src="assets/rizos9.jpeg" alt="Verónica & Emilio 9"></div>
+    </div>
+    <p class="gallery__hint reveal">Desliza para ver más</p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FAQ
+       ═══════════════════════════════════════════ -->
+  <section class="faq" id="faq">
+    <div class="container reveal">
+      <h2 class="section-title">Preguntas Frecuentes</h2>
+      <p class="section-subtitle">Todo lo que necesitas saber para el gran día</p>
+      <hr class="section-divider" />
+
+      <div class="faq__container">
+        <!-- Item 1 -->
+        <div class="faq__item">
+          <button class="faq__header" aria-expanded="false">
+            <span class="faq__question">¿Dónde es exactamente la ceremonia?</span>
+            <span class="faq__icon"></span>
+          </button>
+          <div class="faq__answer">
+            <p>La ceremonia religiosa tendrá lugar en la Iglesia de San Jerónimo el Real, en Madrid. Te recomendamos
+              llegar unos 15 minutos antes.</p>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="faq__item">
+          <button class="faq__header" aria-expanded="false">
+            <span class="faq__question">¿Hay transporte organizado?</span>
+            <span class="faq__icon"></span>
+          </button>
+          <div class="faq__answer">
+            <p>¡Sí! Pondremos a vuestra disposición autobuses que saldrán de la iglesia una vez terminada la ceremonia
+              directamente hacia la Finca Soto del Cerrolén.</p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="faq__item">
+          <button class="faq__header" aria-expanded="false">
+            <span class="faq__question">¿Cuál es el código de vestimenta?</span>
+            <span class="faq__icon"></span>
+          </button>
+          <div class="faq__answer">
+            <p>El dress code es formal. Queremos que os sintáis guapos y cómodos para celebrar y bailar toda la noche.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="faq__item">
+          <button class="faq__header" aria-expanded="false">
+            <span class="faq__question">¿Hasta cuándo puedo confirmar?</span>
+            <span class="faq__icon"></span>
+          </button>
+          <div class="faq__answer">
+            <p>Por favor, confírmanos tu asistencia antes del 1 de mayo a través del formulario que encontrarás más
+              abajo.</p>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="faq__item">
+          <button class="faq__header" aria-expanded="false">
+            <span class="faq__question">¿Cómo aviso de mis alergias o dieta?</span>
+            <span class="faq__icon"></span>
+          </button>
+          <div class="faq__answer">
+            <p>En el formulario de confirmación verás un espacio específico para indicarnos cualquier restricción
+              alimentaria (celiaquía, alergias, vegetariano, etc.).</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -192,8 +269,8 @@
   <section class="rsvp" id="rsvp">
     <div class="container reveal">
       <h2 class="section-title">Confirma tu Asistencia</h2>
-      <p class="section-subtitle">Por favor, confírmanos antes del día 1 de mayo</p>
-      <hr class="section-divider" />
+      <p class="rsvp__text reveal">Por favor, confírmanos tu asistencia antes del día <strong>1 de mayo</strong> de
+        2026. ¡Estamos deseando celebrar este día con vosotros!</p>
 
       <div class="rsvp__content">
         <p class="rsvp__text">

@@ -69,9 +69,15 @@
 
 
   // ─── Navbar Mobile Menu ───────────
-  const navbar = document.getElementById('navbar');
+  const navbar = document.querySelector('.js-navbar');
   const navToggle = document.getElementById('navbar-toggle');
+  const navOverlay = document.querySelector('.js-navbar-overlay');
   const navLinks = document.querySelectorAll('.navbar__link');
+
+  const closeMenu = () => {
+    if (navbar) navbar.classList.remove('menu-open');
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+  };
 
   // Mobile toggle
   if (navToggle) {
@@ -84,11 +90,13 @@
 
   // Close menu on link click
   navLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      navbar.classList.remove('menu-open');
-      if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
-    });
+    link.addEventListener('click', closeMenu);
   });
+
+  // Close menu on overlay click
+  if (navOverlay) {
+    navOverlay.addEventListener('click', closeMenu);
+  }
 
   // Smooth scroll for nav links
   navLinks.forEach(link => {
@@ -104,6 +112,27 @@
         });
       }
     });
+  });
+
+  // ─── FAQ Accordion ────────────────────────
+  document.addEventListener('click', (e) => {
+    const header = e.target.closest('.faq__header');
+    if (!header) return;
+
+    const item = header.parentElement;
+    const isActive = item.classList.contains('active');
+
+    // Close all other items (optional: if you want only one open at a time)
+    document.querySelectorAll('.faq__item').forEach((i) => {
+      if (i !== item) {
+        i.classList.remove('active');
+        i.querySelector('.faq__header').setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Toggle current item
+    item.classList.toggle('active');
+    header.setAttribute('aria-expanded', !isActive);
   });
 
   // ─── Add to Calendar Logic ─────────

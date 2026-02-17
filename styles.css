@@ -24,12 +24,10 @@
   --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   /* ---------- Typography Tokens ---------- */
-  --fs-xs: 0.75rem;
-  --fs-sm: 0.85rem;
+  --fs-sm: 14px;
   --fs-base: 1rem;
-  --fs-md: 1.2rem;
-  --fs-lg: 1.5rem;
-  --fs-xl: 2.5rem;
+  --fs-md: 1.25rem;
+  --fs-lg: 2.5rem;
 
   --max-width: 1000px;
   --border-radius: 8px;
@@ -158,7 +156,7 @@ section {
 
 .section-title {
   font-family: var(--font-serif);
-  font-size: clamp(1.8rem, 4vw, var(--fs-xl));
+  font-size: clamp(1.8rem, 4vw, var(--fs-lg));
   font-weight: 500;
   color: var(--text-main);
   text-align: center;
@@ -194,7 +192,7 @@ section {
   transform: translate(-50%, -50%);
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+  background: linear-gradient(90deg, transparent, var(--text-main), transparent);
 }
 
 /* ============================================
@@ -212,6 +210,26 @@ section {
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
 }
 
+.navbar__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(10, 10, 10, 0.3);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition);
+  z-index: 998;
+}
+
+.js-navbar.menu-open .navbar__overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
 .navbar__container {
   max-width: 1200px;
   margin: 0 auto;
@@ -222,7 +240,7 @@ section {
 
 .navbar__logo {
   font-family: var(--font-serif);
-  font-size: var(--fs-lg);
+  font-size: var(--fs-md);
   font-weight: 600;
   color: var(--text-main);
   letter-spacing: 2px;
@@ -241,7 +259,7 @@ section {
   display: block;
   width: 25px;
   height: 2px;
-  background: var(--gold-dark);
+  background: var(--text-main);
   position: relative;
   transition: all 0.3s ease;
 }
@@ -252,7 +270,7 @@ section {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: var(--gold-dark);
+  background: var(--text-main);
   left: 0;
   transition: all 0.3s ease;
 }
@@ -263,6 +281,13 @@ section {
 
 .hamburger::after {
   bottom: -8px;
+}
+
+/* Ensure toggle is visible and has a hover effect */
+.navbar__toggle:hover .hamburger,
+.navbar__toggle:hover .hamburger::before,
+.navbar__toggle:hover .hamburger::after {
+  background: var(--text-main);
 }
 
 /* Menu open state for hamburger */
@@ -288,18 +313,30 @@ section {
 
 .navbar__link {
   font-family: var(--font-body);
-  font-size: var(--fs-sm);
-  /* Increased from 0.85 */
-  font-weight: 500;
+  font-size: var(--fs-md);
   color: var(--text-main);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
   transition: all var(--transition);
   position: relative;
 }
 
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--text-main);
+  transition: width 0.3s ease;
+}
+
+.navbar__link:hover::after,
+.navbar__link.active::after {
+  width: 100%;
+}
+
 .navbar:hover .navbar__link {
-  color: var(--gold-dark);
+  color: var(--text-main);
 }
 
 /* Mobile Menu */
@@ -397,7 +434,8 @@ section {
 }
 
 .hero__actions .btn {
-  width: 280px;
+  width: 100%;
+  max-width: 320px;
   justify-content: center;
 }
 
@@ -423,7 +461,7 @@ section {
 /* Typography & Elements */
 .hero__names {
   font-family: var(--font-script);
-  font-size: clamp(3.2rem, 10vw, 5.5rem);
+  font-size: clamp(2.8rem, 10vw, 5.5rem);
   font-weight: 400;
   color: var(--text-main);
   line-height: 1;
@@ -459,7 +497,7 @@ section {
 }
 
 .hero__date-segment--large {
-  font-size: var(--fs-xl);
+  font-size: var(--fs-lg);
 }
 
 .hero__date-separator {
@@ -554,7 +592,7 @@ section {
 .timeline__dot {
   width: 16px;
   height: 16px;
-  background: var(--gold-dark);
+  background: var(--text-main);
   border-radius: var(--border-radius);
   border: 4px solid var(--warm-white);
   box-shadow: 0 0 0 4px rgba(125, 99, 22, 0.1);
@@ -587,14 +625,13 @@ section {
   font-size: var(--fs-sm);
   font-weight: 400;
   color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   margin-bottom: 8px;
 }
 
 .timeline__title {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: var(--fs-md);
   font-weight: 600;
   color: var(--text-main);
   margin-bottom: 4px;
@@ -602,7 +639,7 @@ section {
 
 .timeline__location {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: var(--fs-sm);
   color: var(--text-muted);
   margin-bottom: 15px;
 }
@@ -610,8 +647,7 @@ section {
 .timeline__link {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: var(--fs-xs);
-  font-weight: 500;
+  font-size: var(--fs-sm);
   color: var(--text-main);
   text-decoration: none;
   text-transform: uppercase;
@@ -651,7 +687,7 @@ section {
     flex-direction: column;
     align-items: stretch;
     padding-left: 40px;
-    gap: 40px;
+    gap: 60px;
   }
 
   .timeline__item {
@@ -733,6 +769,24 @@ section {
   scroll-snap-align: center;
 }
 
+.gallery__hint {
+  display: none;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .gallery__hint {
+    display: block;
+  }
+}
+
 .gallery__item img {
   width: 100%;
   height: 100%;
@@ -740,6 +794,115 @@ section {
   transition: transform 0.6s ease;
 }
 
+
+/* ============================================
+   FAQ SECTION
+   ============================================ */
+.faq {
+  background: var(--warm-white);
+  padding-bottom: 80px;
+}
+
+.faq__container {
+  max-width: 800px;
+  margin: 40px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.faq__item {
+  background: var(--bg-light);
+  border: 1px solid rgba(75, 50, 50, 0.1);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: all var(--transition);
+}
+
+.faq__item:hover {
+  border-color: rgba(75, 50, 50, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.faq__header {
+  width: 100%;
+  padding: 20px 25px;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+}
+
+.faq__question {
+  font-family: var(--font-serif);
+  font-size: var(--fs-md);
+  color: var(--text-main);
+  font-weight: 500;
+  padding-right: 20px;
+}
+
+.faq__icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.faq__icon::before,
+.faq__icon::after {
+  content: '';
+  position: absolute;
+  background: var(--text-main);
+  transition: all 0.3s ease;
+}
+
+/* Plus icon morphs to Minus */
+.faq__icon::before {
+  width: 12px;
+  height: 2px;
+  top: 9px;
+  left: 4px;
+}
+
+.faq__icon::after {
+  width: 2px;
+  height: 12px;
+  top: 4px;
+  left: 9px;
+}
+
+.faq__item.active .faq__icon::after {
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+.faq__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--warm-white);
+}
+
+.faq__answer p {
+  padding: 0 25px 25px;
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.faq__item.active .faq__answer {
+  max-height: 200px;
+  /* Adjust based on content */
+}
+
+.faq__item.active {
+  border-color: var(--text-main);
+  box-shadow: 0 4px 20px rgba(75, 50, 50, 0.08);
+}
 
 /* ============================================
    GIFTS SECTION
@@ -790,7 +953,8 @@ section {
 }
 
 .rsvp__actions .btn {
-  width: 280px;
+  width: 100%;
+  max-width: 320px;
   justify-content: center;
 }
 
@@ -822,7 +986,7 @@ section {
   transform: translateX(-50%);
   width: 100%;
   height: 4px;
-  background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+  background: linear-gradient(90deg, transparent, var(--text-main), transparent);
 }
 
 .footer__container {
@@ -842,7 +1006,7 @@ section {
 
 .footer__message {
   font-family: var(--font-body);
-  font-size: 1.1rem;
+  font-size: var(--fs-md);
   max-width: 500px;
   margin: 0 auto 15px;
   color: var(--text-muted);
@@ -854,13 +1018,13 @@ section {
   font-size: var(--fs-md);
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--gold-dark);
+  color: var(--text-main);
 }
 
 .footer__footnote {
   margin-top: 40px;
   font-family: var(--font-body);
-  font-size: var(--fs-xs);
+  font-size: var(--fs-sm);
   color: var(--text-muted);
   opacity: 0.6;
   letter-spacing: 1px;
@@ -882,7 +1046,7 @@ section {
   width: 10px;
   height: 10px;
   border-radius: var(--border-radius);
-  background: var(--gold-dark);
+  background: var(--text-main);
   opacity: 0.3;
   border: none;
   cursor: pointer;
