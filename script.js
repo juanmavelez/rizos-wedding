@@ -101,7 +101,14 @@
   // Smooth scroll for nav links
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
-      const targetId = link.getAttribute('href').substring(1);
+      const href = link.getAttribute('href');
+
+      // If it's a cross-page link (contains .html and #), let browser handle it
+      if (href.includes('.html#') || !href.startsWith('#')) {
+        return;
+      }
+
+      const targetId = href.substring(1);
       const targetElement = document.getElementById(targetId);
 
       if (targetElement) {
