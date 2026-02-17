@@ -407,17 +407,15 @@ section {
   overflow: hidden;
 }
 
-/* Image Side (Right on Desktop, Top on Mobile) */
 .hero__side--image {
   height: 45vh;
   /* Mobile half screen */
   background-color: var(--bg-dark);
-  /* Pure dark for blending */
 }
 
 .hero__bg-image {
   width: 100%;
-  g height: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center 20%;
   opacity: 0.85;
