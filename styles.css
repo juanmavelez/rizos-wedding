@@ -252,7 +252,11 @@ section {
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 10px;
+  padding: 0;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 
 .hamburger {
@@ -312,6 +316,9 @@ section {
 }
 
 .navbar__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-family: var(--font-body);
   font-size: var(--fs-md);
   color: var(--text-main);
@@ -322,7 +329,8 @@ section {
 .navbar__link::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: 8px;
+  /* Adjusted for min-height padding */
   left: 0;
   width: 0;
   height: 1.5px;
@@ -349,7 +357,7 @@ section {
   }
 
   .navbar__toggle {
-    display: block;
+    display: flex;
   }
 
   .navbar__menu {
@@ -888,10 +896,10 @@ section {
 
 .faq__answer p {
   padding: 0 25px 25px;
-  font-family: var(--font-body);
-  font-size: var(--fs-base);
+  font-family: var(--font-serif);
+  font-size: var(--fs-md);
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
 .faq__item.active .faq__answer {
@@ -921,10 +929,22 @@ section {
   box-shadow: 0 15px 40px rgba(125, 99, 22, 0.05);
 }
 
+.gifts__card p {
+  font-family: var(--font-serif);
+  font-size: var(--fs-md);
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.gifts__card p:last-child {
+  margin-bottom: 0;
+}
+
 .gifts__iban {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 3.5vw, 1.5rem);
   color: var(--text-main);
   display: block;
   letter-spacing: 1px;
@@ -959,11 +979,11 @@ section {
 }
 
 .rsvp__text {
-  font-family: var(--font-body);
+  font-family: var(--font-serif);
   font-size: var(--fs-md);
-  color: var(--text-main);
+  color: var(--text-muted);
   margin-bottom: 40px;
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
 /* ============================================
@@ -1005,12 +1025,12 @@ section {
 }
 
 .footer__message {
-  font-family: var(--font-body);
+  font-family: var(--font-serif);
   font-size: var(--fs-md);
   max-width: 500px;
   margin: 0 auto 15px;
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
 .footer__date {
