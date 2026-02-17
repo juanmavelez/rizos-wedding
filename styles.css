@@ -895,15 +895,15 @@ section {
 
 .faq__answer p {
   padding: 0 25px 25px;
-  font-family: var(--font-serif);
-  font-size: var(--fs-md);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
   color: var(--text-muted);
-  line-height: 1.8;
+  line-height: 1.6;
 }
 
 .faq__item.active .faq__answer {
-  max-height: 200px;
-  /* Adjust based on content */
+  max-height: 1000px;
+  /* Ensure enough room for all content */
 }
 
 .faq__item.active {
