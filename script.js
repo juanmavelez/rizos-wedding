@@ -111,34 +111,78 @@
     const calendarBtn = e.target.closest('.js-calendar-btn');
     if (!calendarBtn) return;
 
-    console.log('Calendar button clicked!');
-
     try {
+      // Helper to escape special ICS characters
       const escapeICS = (str) => {
         if (!str) return '';
-        return str
+        return String(str)
           .replace(/\\/g, '\\\\')
           .replace(/;/g, '\\;')
           .replace(/,/g, '\\,')
           .replace(/\n/g, '\\n');
       };
 
+      /**
+       * Folds lines according to RFC 5545 (75 octets max)
+       * We use TextEncoder to handle byte-length correctly for UTF-8
+       */
+      const foldLine = (line) => {
+        const encoder = new TextEncoder();
+        const decoder = new TextDecoder();
+        const bytes = encoder.encode(line);
+
+        if (bytes.length <= 75) return line;
+
+        const result = [];
+        let offset = 0;
+        let isFirst = true;
+
+        while (offset < bytes.length) {
+          // Reserve 1 byte for the leading space on folded lines
+          const maxLen = isFirst ? 75 : 74;
+          let chunkLen = maxLen;
+
+          if (offset + chunkLen > bytes.length) {
+            chunkLen = bytes.length - offset;
+          } else {
+            // Ensure we don't break in the middle of a multi-byte character
+            // Check if the next byte is a continuation byte (starts with 10xxxxxx)
+            while (chunkLen > 0 && (bytes[offset + chunkLen] & 0xc0) === 0x80) {
+              chunkLen--;
+            }
+          }
+
+          const chunk = bytes.slice(offset, offset + chunkLen);
+          result.push((isFirst ? '' : ' ') + decoder.decode(chunk));
+
+          offset += chunkLen;
+          isFirst = false;
+        }
+        return result.join('\r\n');
+      };
+
       const event = {
-        title: 'Boda de Verónica & Emilio',
+        title: 'Boda de Verónica y Emilio',
         start: '20260619T180000',
         end: '20260620T040000',
         location: 'Iglesia de San Jerónimo el Real, Madrid',
-        description: '¡Nos casamos! Te esperamos para celebrar este día tan especial.'
+        description: '¡Nos hace mucha ilusión que nos acompañes en nuestro gran día!\n\n' +
+          'Ceremonia:\n' +
+          '18:00 H - Iglesia de San Jerónimo el Real\n' +
+          'https://maps.google.com/?q=Iglesia+de+San+Jerónimo+el+Real,+Madrid\n\n' +
+          'Celebración:\n' +
+          'Finca Soto del Cerrolén\n' +
+          'https://maps.google.com/?q=Finca+Soto+del+Cerrolén'
       };
 
-      const icsMsg = [
+      const icsLines = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
         'PRODID:-//Wedding Website//ES',
         'CALSCALE:GREGORIAN',
         'METHOD:PUBLISH',
         'BEGIN:VEVENT',
-        `UID:${Date.now()}@weddingwebsite.com`,
+        `UID:wedding-20260619-veronica-emilio@weddingwebsite.com`,
         `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z`,
         `DTSTART:${event.start}`,
         `DTEND:${event.end}`,
@@ -148,11 +192,16 @@
         'CLASS:PUBLIC',
         'TRANSP:OPAQUE',
         'STATUS:CONFIRMED',
+        'SEQUENCE:0',
         'END:VEVENT',
         'END:VCALENDAR'
-      ].join('\r\n');
+      ];
 
-      const blob = new Blob([icsMsg], { type: 'text/calendar;charset=utf-8' });
+      // Map lines through folding
+      const icsMsg = icsLines.map(foldLine).join('\r\n');
+
+      // Use a UTF-8 BOM (\ufeff) to help some apps recognize the encoding
+      const blob = new Blob(['\ufeff', icsMsg], { type: 'text/calendar;charset=utf-8' });
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
 
@@ -161,7 +210,6 @@
       link.style.display = 'none';
       document.body.appendChild(link);
 
-      console.log('Triggering download...');
       link.click();
 
       // Cleanup
@@ -170,9 +218,8 @@
         window.URL.revokeObjectURL(url);
       }, 500);
 
-      console.log('Download logic completed.');
     } catch (err) {
-      console.error('Error generating calendar event:', err);
+      // Silent fail for production or minimal logging if absolutely needed
     }
   });
 })();
