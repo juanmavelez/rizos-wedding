@@ -4,7 +4,7 @@
    ============================================ */
 
 /* ---------- Google Fonts ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 /* ---------- Custom Properties ---------- */
 :root {
@@ -20,8 +20,16 @@
   --text-inverse: #FFFFFF;
 
   --font-script: 'Great Vibes', cursive;
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-body: 'Lato', 'Helvetica Neue', sans-serif;
+  --font-serif: Georgia, 'Times New Roman', serif;
+  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* ---------- Typography Tokens ---------- */
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.85rem;
+  --fs-base: 1rem;
+  --fs-md: 1.2rem;
+  --fs-lg: 1.5rem;
+  --fs-xl: 2.5rem;
 
   --max-width: 1000px;
   --border-radius: 8px;
@@ -83,12 +91,13 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 32px;
+  padding: 12px 32px;
+  min-height: 44px;
   border-radius: var(--border-radius);
   font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   text-decoration: none;
   transition: all var(--transition);
@@ -103,7 +112,6 @@ a:hover {
   background: var(--text-main);
   color: var(--text-inverse);
   box-shadow: 0 4px 15px rgba(75, 50, 50, 0.2);
-  letter-spacing: 2px;
 }
 
 .btn--primary:hover {
@@ -117,11 +125,6 @@ a:hover {
   background: transparent;
   color: var(--text-main);
   border: 1.5px solid var(--text-main);
-  border-radius: var(--border-radius);
-  padding: 8px 24px;
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 1px;
 }
 
 .btn--secondary:hover {
@@ -155,8 +158,8 @@ section {
 
 .section-title {
   font-family: var(--font-serif);
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 600;
+  font-size: clamp(1.8rem, 4vw, var(--fs-xl));
+  font-weight: 500;
   color: var(--text-main);
   text-align: center;
   margin-bottom: 12px;
@@ -166,7 +169,7 @@ section {
 
 .section-subtitle {
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: var(--fs-base);
   font-weight: 300;
   text-align: center;
   color: var(--text-muted);
@@ -219,8 +222,8 @@ section {
 
 .navbar__logo {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--fs-lg);
+  font-weight: 600;
   color: var(--text-main);
   letter-spacing: 2px;
   text-decoration: none;
@@ -285,9 +288,9 @@ section {
 
 .navbar__link {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   /* Increased from 0.85 */
-  font-weight: 700;
+  font-weight: 500;
   color: var(--text-main);
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -450,13 +453,13 @@ section {
 
 .hero__date-segment {
   font-family: var(--font-serif);
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: var(--fs-md);
+  font-weight: 400;
   color: var(--text-main);
 }
 
 .hero__date-segment--large {
-  font-size: 2.5rem;
+  font-size: var(--fs-xl);
 }
 
 .hero__date-separator {
@@ -581,8 +584,8 @@ section {
 .timeline__time {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: var(--fs-sm);
+  font-weight: 400;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -607,8 +610,8 @@ section {
 .timeline__link {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: var(--fs-xs);
+  font-weight: 500;
   color: var(--text-main);
   text-decoration: none;
   text-transform: uppercase;
@@ -692,7 +695,7 @@ section {
 
 .history__text p {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: var(--fs-md);
   color: var(--text-muted);
   margin-bottom: 24px;
   line-height: 1.8;
@@ -793,7 +796,7 @@ section {
 
 .rsvp__text {
   font-family: var(--font-body);
-  font-size: 1.1rem;
+  font-size: var(--fs-md);
   color: var(--text-main);
   margin-bottom: 40px;
   line-height: 1.6;
@@ -848,7 +851,7 @@ section {
 
 .footer__date {
   font-family: var(--font-serif);
-  font-size: 1.2rem;
+  font-size: var(--fs-md);
   letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--gold-dark);
@@ -857,7 +860,7 @@ section {
 .footer__footnote {
   margin-top: 40px;
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   color: var(--text-muted);
   opacity: 0.6;
   letter-spacing: 1px;
